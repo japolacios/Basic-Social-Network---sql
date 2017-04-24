@@ -1,0 +1,79 @@
+//General Tags & Styles
+.body-wrapper {
+    height: 100%;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+//Form Input & States
+input[type=text],
+input[type=password],
+input {
+    background-color: $form-input-text-bg;
+    border: 3px solid $form-input-text-border;
+    color: $form-input-text-color;
+    padding: 0.5em 0;
+    text-align: center;
+    margin: 1em 0;
+    width: 100%;
+    transition: all 0.4s ease-in-out;
+}
+
+input[type=text]:hover,
+input[type=password]:hover,
+input:hover {
+    border: 3px solid $form-input-text-border-hover;
+    background-color: $form-input-text-bg-hover;
+    color: $form-input-text-color-hover;
+    transition: all 0.4s ease-in-out;
+}
+
+input[type=text]:focus,
+input[type=password]:focus,
+input:focus {
+    border: 3px solid $form-input-text-border-focus;
+    background-color: $form-input-text-bg-focus;
+    color: $form-input-text-color-focus;
+    transition: all 0.4s ease-in-out;
+}
+
+//Form Button
+.form-button,
+.form-button:visited {
+    background-color: $form-button-bg;
+    border: 3px solid $form-button-border;
+    color: $form-button-text-color;
+    padding: 0.25em 0;
+    text-align: center;
+    margin: 1em 0;
+    width: 100%;
+    transition: all 0.4s ease-in-out;
+}
+
+.form-button:hover {
+    border: 3px solid $form-button-border-hover;
+    background-color: $form-button-bg-hover;
+    color: $form-button-text-color-hover;
+    transition: all 0.4s ease-in-out;
+}
+
+//Any Link
+a,
+a:link,
+a:visited {
+    color: $main-link-color;
+    font-weight: $font-light;
+    transition: all 0.4s ease-in-out;
+}
+
+a:hover {
+    font-weight: $font-bold;
+    transition: all 0.4s ease-in-out;
+}
+
+h2 {
+    font-family: $font-title;
+    color: white;
+    font-size: 2em;
+    margin-bottom: 1em;
+}

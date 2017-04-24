@@ -1,0 +1,52 @@
+.landing {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-image: $landing-bg-image;
+    background-size: cover;
+    background-position: bottom right;
+    bacground-repeat: no-repeat;
+    overflow: hidden;
+    text-align: center;
+    .bar {
+        width: 100%;
+        height: 25%;
+        background-color: $landing-bar-bg-color;
+    }
+    .page-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1 0 auto;
+        width: 50%;
+        height: 50%;
+        .logo {
+            display: flex;
+            align-items: center;
+            width: auto;
+            height: 100%;
+            img {
+                // background: blue;
+                width: auto;
+                height: 90%;
+            }
+        }
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 40%;
+            min-width: 200px;
+            height: 100%;
+            span {
+                font-family: $font-title;
+                color: white;
+                margin: 1.2em 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,42 @@
+//Main Variables
+$main-font-color: #3e4149;
+$main-bg-color: #141519;
+$main-link-color: #FFF;
+//Font weight
+$font-light: 300;
+$font-bold: 900;
+//Sheeping Dogs Font
+$font-title: title-font;
+//-----------------------------------------------
+//Form Input [Text & Password] States
+//-----------------------------------------------
+//Form Background
+$form-input-text-bg: rgba(188, 188, 188, 0.2);
+$form-input-text-bg-hover: rgba(25, 25, 25, 0.5);
+$form-input-text-bg-focus: rgba(200, 200, 200, 0.8);
+//Form Border
+$form-input-text-border: rgba(255, 255, 255, 0.2);
+$form-input-text-border-hover: rgba(255, 255, 255, 0.2);
+$form-input-text-border-focus: rgba(255, 255, 255, 1);
+//Form Text Color
+$form-input-text-color: rgba(255, 255, 255, 0.8);
+$form-input-text-color-hover: rgba(100, 100, 100, 0.9);
+$form-input-text-color-focus: rgba(255, 255, 255, 1);
+//Form Button Background
+$form-button-bg: rgba(188, 188, 188, 0.6);
+$form-button-bg-hover: rgba(200, 200, 200, 0.8);
+//Form Button Border
+$form-button-border: rgba(255, 255, 255, 0.8);
+$form-button-border-hover: rgba(100, 100, 100, 0.9);
+//Form Button Text Color
+$form-button-text-color: rgba(255, 255, 255, 0.8);
+$form-button-text-color-hover: rgba(100, 100, 100, 0.9);
+//-----------------------------------------------------
+//Landing Page Variables
+//-----------------------------------------------------
+$landing-bar-bg-color: #000;
+$landing-bg-image: url(../images/landing-bg.png);
+//-----------------------------------------------------
+//Register Page Variables
+//-----------------------------------------------------
+$register-bg-image: url(../images/register-bg.png);

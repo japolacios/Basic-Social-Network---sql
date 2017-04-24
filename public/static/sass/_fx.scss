@@ -1,0 +1,61 @@
+//-------------------------
+//Intro Animations
+//-------------------------
+//+++++++++++++++++++++++++
+//Scale In Animation
+.scale {
+    opacity: 1;
+    // background-color: transparent;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    animation: scale-in 0.6s 0.3s both;
+}
+
+@keyframes scale-in {
+    0% {
+        opacity: 0;
+        transform: scale(3);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+//Fade In Animation
+.fade {
+    opacity: 1;
+    // background-color: transparent;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    animation: fade-in 0.6s 0.3s both;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+//Float In Right Animation
+.float-right {
+    opacity: 1;
+    // background-color: transparent;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    animation: float-in-right 0.6s 0.3s both;
+}
+
+@keyframes float-in-right {
+    0% {
+        opacity: 0;
+        transform: translate(50%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
