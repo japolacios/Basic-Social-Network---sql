@@ -1,20 +1,17 @@
 {
-  "name": "nitrous-site",
-  "version": "1.0.0",
-  "description": "Simple Social Network with React templating and MySql",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "javascript",
-    "react",
-    "mysql"
-  ],
-  "author": "Japo",
-  "license": "ISC",
-  "dependencies": {
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4"
-  }
+    "name": "nitrous-site"
+    , "version": "1.0.0"
+    , "description": "Simple Social Network with React templating and MySql"
+    , "main": "index.js"
+    , "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    }
+    , "keywords": [
+    "javascript"
+    , "react"
+    , "mysql"
+  ]
+    , "author": "Japo"
+    , "license": "ISC"
+    , "dependencies": {}
 }

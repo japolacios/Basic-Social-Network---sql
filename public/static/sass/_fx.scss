@@ -59,3 +59,43 @@
         transform: translate(0);
     }
 }
+
+//Float In down Animation
+.float-down {
+    opacity: 1;
+    // background-color: transparent;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    animation: float-in-down 0.6s 0.3s both;
+}
+
+@keyframes float-in-down {
+    0% {
+        opacity: 0;
+        transform: translate(0,-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0,0);
+    }
+}
+
+//Float In up Animation
+.float-up{
+    opacity: 1;
+    // background-color: transparent;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    animation: float-in-up 1s 0.9s both;
+}
+
+@keyframes float-in-up {
+    0% {
+        opacity: 0;
+        transform: translate(0,70%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0,0);
+    }
+}
