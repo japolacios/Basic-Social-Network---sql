@@ -1,24 +1,27 @@
 {
-    "name": "nitrous-site"
-    , "version": "1.0.0"
-    , "description": "Simple Social Network with React templating and MySql"
-    , "main": "index.js"
-    , "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    }
-    , "keywords": [
-    "javascript"
-    , "mysql"
-  ]
-    , "author": "Japo"
-    , "license": "ISC"
-    , "dependencies": {
-        "body-parser": "^1.17.1"
-        , "express-handlebars": "^3.0.0"
-        , "gulp": "^3.9.1"
-        , "gulp-autoprefixer": "^3.1.1"
-        , "gulp-clean-css": "^3.0.4"
-        , "gulp-htmlmin": "^3.0.0"
-        , "gulp-sass": "^3.1.0"
-    }
+  "name": "nitrous-site",
+  "version": "1.0.0",
+  "description": "Simple Social Network with React templating and MySql",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "javascript",
+    "mysql"
+  ],
+  "author": "Japo",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cors": "^2.8.3",
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-clean-css": "^3.0.4",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-sass": "^3.1.0",
+    "mysql": "^2.13.0"
+  }
 }

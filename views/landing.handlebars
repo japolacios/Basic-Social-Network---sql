@@ -1,0 +1,39 @@
+<div class="body-wrapper">
+    <div class="landing">
+        <div class="bar"></div>
+        <div class="page-content scale">
+            <div class="logo"><img src="./static/images/landing-logo.png" alt="Nitrous Logo"> </div>
+            <div class="login-form">
+
+
+                <h2>Login</h2>
+                <input type="text" placeholder="User Name" id="userName">
+                <input type="password" placeholder="Password" id="userPassword">
+                <a href="javascript:;" class="form-button" id="form-button">Login</a> {{message}}
+                <span>Or</span>
+                <a href="./register">Create Account</a>
+
+            </div>
+        </div>
+        <div class="bar"></div>
+    </div>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+
+
+</script>
+<script>
+    $(document).ready(function() {
+        $("#form-button").click(function() {
+            console.log('Sending Login Data');
+            userName = $("#userName").val();
+            userPassword = $("#userPassword").val();
+            $.post("http://localhost:3001/login", {
+                userName: userName,
+                userPassword: userPassword
+            });
+
+        });
+    });
+
+</script>
