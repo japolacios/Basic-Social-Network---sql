@@ -11,12 +11,14 @@
 
 
                 <h2>Create Account</h2>
-                <input type="text" placeholder="Complete Name" id="user-name">
-                <input type="text" placeholder="User Name" id="user-name">
-                <input type="email" placeholder="Email" id="user-email">
-                <input type="text" placeholder="Country" id="user-country">
-                <input type="password" placeholder="Password" id="user-password">
-                <a href="javascript:;" class="form-button">Register</a>
+                <input type="text" placeholder="Complete Name" id="userCompleteName">
+                <input type="text" placeholder="User Name" id="userName">
+                <input type="email" placeholder="Email" id="userMail">
+                <input type="text" placeholder="Country" id="userCountry">
+                <input type="password" placeholder="Password" id="userPassword">
+                <input type="file" id="userPic" name="photo"
+                placeholder="Profile Pic">
+                <a href="javascript:;" class="form-button" id="form-button">Register</a>
 
                 <span>Or</span>
 
@@ -28,3 +30,25 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $("#form-button").click(function() {
+            console.log('Sending Register Data');
+            userName = $("#userName").val();
+            userPassword = $("#userPassword").val();
+            userCompleteName = $("#userCompleteName").val();
+            userMail = $("#userMail").val();
+            userCountry = $("#userCountry").val();
+            userPic = $("#userPic").val();
+            $.post("../register", {
+                userName: userName,
+                userPassword: userPassword,
+                userCompleteName : userCompleteName,
+                userMail: userMail,
+                userCountry: userCountry,
+                userPic:userPic
+            });
+
+        });
+    });
+</script>

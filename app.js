@@ -3,29 +3,19 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var cors = require('cors');
-var userRouter = require('./routes/user-router');
 
-//var mysql = require("mysql");
-//Define Server Usage
-app.use(express.static('public'));
-app.use(express.static('files'));
 //Set Cros
 app.use(cors());
-// Set & Run Server 
+// Set Server Vars 
 var hostname = 'localhost';
 var port = 3001;
-
 //Set Public File
-app.use('/public', express.static('static/'));
-
-
-
+app.use(express.static('public'));
 //Define body-parser usage
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
-
 //Set Render Engine - Get main as template
 var handlebars = require('express-handlebars').create({
     defaultLayout: 'main'
@@ -36,6 +26,10 @@ app.set('view engine', 'handlebars');
 //MyModules
 //**********************************
 var db = require('./database');
+var userRouter = require('./routes/user-router');
+app.use("/login", userRouter);
+var registerRouter = require('./routes/register-router');
+app.use("/register", registerRouter);
 
 //Fetch DataBase
 
@@ -54,11 +48,13 @@ db.connect(function (err) {
 //Renders
 //Default Behavior
 app.all('/', function (req, res, next) {
+
+    res.redirect(303,'/login');
+    /*
     console.log('Login Render');
     res.render('landing', {
-        message: "Hola"
+        error: "Hola"
     });
+    */
 });
-
-app.use("/login",userRouter.getUserRoutes());
 

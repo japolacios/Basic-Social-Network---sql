@@ -2,44 +2,69 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var userControl = require('../controllers/user-controller');
-
-exports.getUserRoutes = function () {
-    var userRouter = express.Router('/');
-    //Format to JSon
-    userRouter.use(bodyParser.json());
-    userRouter.use(bodyParser.urlencoded({
-        extended: true
-    }));
-    var ruta = userRouter.route('/');
-    ruta.post(function (req, res) {
-        console.log('Atempting Login');
-        userName = req.body.userName;
-        userPassword = req.body.userPassword;
-        console.log('User Name: ' + userName + ' - Password: ' + userPassword);
-userControl.userLogin(userName, userPassword,function(result){
-
-
-         if (result == 1) {
-            res.render('landing', {
-                message: "Usuario Incorrecto"
-            });
-        }
-        if (restult == 2) {
-            res.render('landing', {
-                message: "Password Invalido"
-            });
-        }
-
-        if (restult == 3) {
-            res.render('landing', {
-                message: "Exito"
-            });
-        }
+var db = require('../database');
+var user;
+var userRouter = express.Router();
+var errorR = "Hola";
+//Format to JSon
+userRouter.use(bodyParser.json());
+//userRouter.route('/');
+userRouter.get('/', function(req, res) {
+    res.render('landing',{error:errorR});
 });
 
-   
-    });
-    
-    return userRouter;
 
-}
+userRouter.post('/', function(req, res) {
+    console.log('Atempting Login');
+    userName = req.body.userName;
+    userPassword = req.body.userPassword;
+
+    console.log('User Name: ' + userName + ' - Password: ' + userPassword);
+
+    if (userName == null || userName == "" || userPassword == null || userPassword == "") {
+        console.log('Datos Vacios');
+        errorR = "Datos Vacios";
+        res.render('landing', {
+            error: "Debes ingresar todos los datos"
+        });
+
+
+
+    } else {
+
+        user = userName;
+        db.getConection().query({
+            sql: 'SELECT * FROM usuarios WHERE correo = ?',
+            timeout: 1000,
+        }, [user], function(err, rows) {
+
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(rows[0]);
+                    errorR = "Invalid User";
+                if (rows.length == 0) {
+                    console.log('invalid user');
+                    res.render('landing', {
+                        error: 'Invalid User'
+                    });
+                } else {
+                    if (rows[0].password == userPassword) {
+                        user = rows[0];
+                        //logcontrol.setUser(current_user);
+                        console.log('Valid Credentials -> Redirecting')
+                        res.redirect(303,'/register');
+                    } else {
+                        errorR = "Invalid Password";
+                        console.log('invalid password');
+                        res.render('landing', {
+                            error: 'Invalid Password'
+                        });
+                    }
+                }
+            }
+        });
+    }
+});
+
+module.exports = userRouter
