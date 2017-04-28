@@ -16,9 +16,10 @@ exports.getUserRoutes = function () {
         userName = req.body.userName;
         userPassword = req.body.userPassword;
         console.log('User Name: ' + userName + ' - Password: ' + userPassword);
-        var restult = userControl.userLogin(userName, userPassword);
+userControl.userLogin(userName, userPassword,function(result){
 
-        if (result == 1) {
+
+         if (result == 1) {
             res.render('landing', {
                 message: "Usuario Incorrecto"
             });
@@ -34,9 +35,11 @@ exports.getUserRoutes = function () {
                 message: "Exito"
             });
         }
+});
+
+   
     });
-    /*
-    ruta.post(function (req, res, next) {});
-    return photoRouter;
-    */
+    
+    return userRouter;
+
 }

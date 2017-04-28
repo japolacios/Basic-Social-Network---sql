@@ -28,7 +28,7 @@
             console.log('Sending Login Data');
             userName = $("#userName").val();
             userPassword = $("#userPassword").val();
-            $.post("http://localhost:3001/login", {
+            $.post("../login", {
                 userName: userName,
                 userPassword: userPassword
             });
