@@ -40,7 +40,7 @@
             userMail = $("#userMail").val();
             userCountry = $("#userCountry").val();
             userPic = $("#userPic").val();
-            $.post("../register", {
+            $.post("/register", { 
                 userName: userName,
                 userPassword: userPassword,
                 userCompleteName : userCompleteName,

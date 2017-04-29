@@ -1,0 +1,41 @@
+/* Portrait */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (orientation: portrait) {
+  	.landing{
+  		.bar{
+  			display: none;
+  		}
+  		.page-content{
+  			    flex-direction: column;
+  			.logo{
+  				height: 60%;
+  			}
+  		}
+  	}
+  	.register{
+  		.bar{
+  			display: none;
+  		}
+  	}
+
+  	.wall{
+  		nav{
+  			height: 120px;
+  			flex-direction: column;
+
+  			.logout{
+  				display: none;
+  			}
+  		}
+  		.posts-container{
+  			.post{
+  				width: 100%;
+  				.post-content{
+  					flex-direction: column-reverse;
+  				}
+  			}
+  		}
+  	}
+}

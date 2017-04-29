@@ -30,7 +30,8 @@ var userRouter = require('./routes/user-router');
 app.use("/login", userRouter);
 var registerRouter = require('./routes/register-router');
 app.use("/register", registerRouter);
-
+var wallRouter = require('./routes/wall-routes');
+app.use("/wall", wallRouter);
 //Fetch DataBase
 
 db.connect(function (err) {

@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var userControl = require('../controllers/user-controller');
 var db = require('../database');
 var user;
+var userControl = require('../controllers/user-controller');
 var userRouter = express.Router();
 var errorR = "Hola";
 //Format to JSon
@@ -14,7 +15,7 @@ userRouter.get('/', function(req, res) {
 });
 
 
-userRouter.post('/', function(req, res) {
+userRouter.post('/', function(req, res, next) {
     console.log('Atempting Login');
     userName = req.body.userName;
     userPassword = req.body.userPassword;
@@ -34,7 +35,7 @@ userRouter.post('/', function(req, res) {
 
         user = userName;
         db.getConection().query({
-            sql: 'SELECT * FROM usuarios WHERE correo = ?',
+            sql: 'SELECT * FROM users WHERE user = ?',
             timeout: 1000,
         }, [user], function(err, rows) {
 
@@ -51,9 +52,9 @@ userRouter.post('/', function(req, res) {
                 } else {
                     if (rows[0].password == userPassword) {
                         user = rows[0];
-                        //logcontrol.setUser(current_user);
+                        userControl.setUser(rows[0].user);
                         console.log('Valid Credentials -> Redirecting')
-                        res.redirect(303,'/register');
+                        res.redirect('/wall');
                     } else {
                         errorR = "Invalid Password";
                         console.log('invalid password');

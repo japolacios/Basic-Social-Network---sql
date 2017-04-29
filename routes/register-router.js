@@ -13,14 +13,15 @@ registerRouter.get('/', function(req, res) {
 });
 
 registerRouter.post('/', function(req, res) {
-    console.log('Atempting Login');
+    console.log('Atempting Register');
     user = req.body.userName;
     password = req.body.userPassword;
     mail = req.body.userMail;
-   name = req.body.userCompleteName;
+    name = req.body.userCompleteName;
     country = req.body.userCountry;
     picture = './public/user-uploads/' + req.body.userPic;
-    newUser = [user,password,mail,country,picture];
+    console.log('Antes de la variable');
+    var newUser = [user ,password,mail,country,picture,password];
     console.log('User Name: ' + user + ' - Password: ' + password);
 
     if (user == null || user == "" || password == null || password == "" || name == null || name == "" || country == null || country == "" || picture == null || picture == "") {
@@ -47,11 +48,12 @@ registerRouter.post('/', function(req, res) {
                 	console.log('El usuario ya existe');
                     res.render('register', { error: 'Usuario ya Existe' });
                 } else {
+                    console.log('Antes del query');
                     db.getConection().query({
-                        sql: "INSERT INTO users (user, name, mail, country, password, picture) VALUES(user, name, mail, country, password, picture)",
+                        sql: 'INSERT INTO users  (user, name, mail, country, picture, password) VALUES(?,?,?,?,?,?)',
                         timeout: 1000,
                     }, newUser, function(err, rows) {
-
+                        console.log(rows);
                         if (err) {
                             console.log(err);
                         } else {

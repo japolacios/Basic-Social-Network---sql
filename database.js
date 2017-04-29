@@ -5,7 +5,7 @@ exports.connect = function (done) {
     pool = mySql.createPool({
         host: 'localhost'
         , user: 'root'
-        , password: ''
+        , password: 'root'
         , database: 'social-net'
     });
     console.log('Pool Created');
