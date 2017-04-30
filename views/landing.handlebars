@@ -1,4 +1,5 @@
 <div class="body-wrapper">
+<div class="no-display" id="transition"></div>
     <div class="landing">
         <div class="bar"></div>
         <div class="page-content scale">
@@ -18,6 +19,10 @@
         <div class="bar"></div>
     </div>
 </div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+
+
+</script>
 <script>
     $(document).ready(function() {
         $("#form-button").click(function() {
@@ -28,7 +33,10 @@
                 userName: userName,
                 userPassword: userPassword
             });
-
+            $("#transition").addClass("fade-gray").removeClass("no-display");
+                setTimeout(function () {
+           window.location.replace("/wall");
+            }, 3000);
         });
     });
 

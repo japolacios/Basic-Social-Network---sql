@@ -1,5 +1,7 @@
 .wall {
     width: 100%;
+    display: flex;
+    justify-content: center;
     nav {
         background: #060607;
         z-index: 1;
@@ -45,9 +47,9 @@
         justify-content: center;
         top: 120px;
         position: relative;
-        width: 100%;
+        width: 80%;
         .post {
-            width: 80%;
+            width: 100%;
             display: flex;
             flex-direction: column;
             .post-content {

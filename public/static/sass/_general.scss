@@ -8,7 +8,7 @@
 //Form Input & States
 input[type=text],
 input[type=password],
-input {
+input,textarea {
     background-color: $form-input-text-bg;
     border: 3px solid $form-input-text-border;
     color: $form-input-text-color;
@@ -22,7 +22,7 @@ input {
 
 input[type=text]:hover,
 input[type=password]:hover,
-input:hover {
+input:hover,textarea:hover {
     border: 3px solid $form-input-text-border-hover;
     background-color: $form-input-text-bg-hover;
     color: $form-input-text-color-hover;
@@ -31,7 +31,7 @@ input:hover {
 
 input[type=text]:focus,
 input[type=password]:focus,
-input:focus {
+input:focus,textarea:focus {
     border: 3px solid $form-input-text-border-focus;
     background-color: $form-input-text-bg-focus;
     color: $form-input-text-color-focus;

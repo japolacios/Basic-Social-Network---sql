@@ -1,4 +1,5 @@
 <div class="body-wrapper">
+    <div class="no-display" id="transition"></div>
     <div class="register">
         <div class="bar fade">
             <div class="logo">
@@ -19,10 +20,12 @@
                 <input type="file" id="userPic" name="photo"
                 placeholder="Profile Pic">
                 <a href="javascript:;" class="form-button" id="form-button">Register</a>
-
+                {{error}}
+                <br/>
+                <br/>
                 <span>Or</span>
-
-                <a href="javascript:;">Create Account</a>
+                <br/>
+                <a href="/login">Go Back</a>
 
 
 
@@ -48,7 +51,10 @@
                 userCountry: userCountry,
                 userPic:userPic
             });
-
+            $("#transition").addClass("fade-gray").removeClass("no-display");
+                setTimeout(function () {
+           window.location.replace("/wall");
+            }, 3000);
         });
     });
 </script>

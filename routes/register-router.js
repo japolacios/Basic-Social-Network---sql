@@ -2,14 +2,15 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var registerControl = require('../controllers/register-controller');
+var userControl = require('../controllers/user-controller');
 var db = require('../database');
 var user;
 var registerRouter = express.Router();
 //Format to JSon
 registerRouter.use(bodyParser.json());
-//userRouter.route('/');
+
 registerRouter.get('/', function(req, res) {
-    res.render('register');
+    res.render('register', { error: userControl.getMessage() });
 });
 
 registerRouter.post('/', function(req, res) {
@@ -21,21 +22,17 @@ registerRouter.post('/', function(req, res) {
     country = req.body.userCountry;
     picture = './public/user-uploads/' + req.body.userPic;
     console.log('Antes de la variable');
-    var newUser = [user ,password,mail,country,picture,password];
+    var newUser = [user, password, mail, country, picture, password];
     console.log('User Name: ' + user + ' - Password: ' + password);
-
+    userControl.setIncoming(2);
     if (user == null || user == "" || password == null || password == "" || name == null || name == "" || country == null || country == "" || picture == null || picture == "") {
         console.log('Faltan Datos');
-
-        res.render('landing', {
-            error: "Debes ingresar todos los datos"
-        });
-
+        userControl.setMessage("Fill all Data");
 
 
     } else {
 
-        user_session = user;
+        user_session = req.body.userName;;
         db.getConection().query({
             sql: 'SELECT * FROM users WHERE user = ?',
             timeout: 1500,
@@ -45,8 +42,8 @@ registerRouter.post('/', function(req, res) {
             } else {
 
                 if (rows.length > 0) {
-                	console.log('El usuario ya existe');
-                    res.render('register', { error: 'Usuario ya Existe' });
+                    console.log('El usuario ya existe');
+                    userControl.setMessage("User Duplicates");
                 } else {
                     console.log('Antes del query');
                     db.getConection().query({
@@ -57,8 +54,9 @@ registerRouter.post('/', function(req, res) {
                         if (err) {
                             console.log(err);
                         } else {
+                            userControl.setUser(user_session);
+                            userControl.setUserId();
                             console.log('Valid Credentials -> Redirecting')
-                            res.redirect(303, '/wall');
                         }
                     });
                 }

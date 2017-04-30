@@ -11,7 +11,7 @@ var errorR = "Hola";
 userRouter.use(bodyParser.json());
 //userRouter.route('/');
 userRouter.get('/', function(req, res) {
-    res.render('landing',{error:errorR});
+    res.render('landing',{error:userControl.getMessage()});
 });
 
 
@@ -19,17 +19,12 @@ userRouter.post('/', function(req, res, next) {
     console.log('Atempting Login');
     userName = req.body.userName;
     userPassword = req.body.userPassword;
-
+    userControl.setIncoming(1);
     console.log('User Name: ' + userName + ' - Password: ' + userPassword);
 
     if (userName == null || userName == "" || userPassword == null || userPassword == "") {
         console.log('Datos Vacios');
-        errorR = "Datos Vacios";
-        res.render('landing', {
-            error: "Debes ingresar todos los datos"
-        });
-
-
+        userControl.setMessage("Datos Vacios");
 
     } else {
 
@@ -43,24 +38,25 @@ userRouter.post('/', function(req, res, next) {
                 console.log(err);
             } else {
                 console.log(rows[0]);
-                    errorR = "Invalid User";
+                    userControl.setMessage("Invalid User");
                 if (rows.length == 0) {
                     console.log('invalid user');
+                    userControl.setMessage("Invalid User");
+                    /*
                     res.render('landing', {
                         error: 'Invalid User'
                     });
+                    */
                 } else {
                     if (rows[0].password == userPassword) {
                         user = rows[0];
                         userControl.setUser(rows[0].user);
+                        userControl.setUserId();
                         console.log('Valid Credentials -> Redirecting')
-                        res.redirect('/wall');
+                        
                     } else {
-                        errorR = "Invalid Password";
+                        userControl.setMessage("Invalid Password");
                         console.log('invalid password');
-                        res.render('landing', {
-                            error: 'Invalid Password'
-                        });
                     }
                 }
             }

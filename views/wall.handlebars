@@ -5,19 +5,20 @@
            <div class="profile">
            <a class="add-post modal-button" href="javascript:;">+</a>
                <span>{{userName}}</span>
-               <img src="./static/images/default-profile.png">
+               <img src="{{userPicture}}">
            </div>
            <div class="logout">Logout</div>
        </nav>
         <div class="posts-container float-up">
+        {{#each data}}
             <div class="post">
                 <div class="post-content">
                     <div class="post-image">
-                        <img src="./static/images/dummiePost.png">
+                        <img src="{{postPicture}}">
                     </div>
                     <div class="post-profile">
                         <img src="./static/images/default-profile.png">
-                        <span>John Doe</span>
+                        <span>{{owner}}</span>
                     </div>
                 </div>
                 <div class="stats">
@@ -31,6 +32,7 @@
                     </div>
                 </div>
                 <div class="comments-container">
+                    
                     <div class="comment">
                         <div class="owner">
                             <img src="./static/images/default-profile.png">
@@ -38,30 +40,35 @@
                         </div>
                         <div class="comment-content">Lorem Ipsum</div>
                     </div>
-                    <div class="comment">
-                        <div class="owner">
-                            <img src="./static/images/default-profile.png">
-                            <span>John Doe</span>
-                        </div>
-                        <div class="comment-content">Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</div>
-                    </div>
-                    <div class="comment">
-                        <div class="owner">
-                            <img src="./static/images/default-profile.png">
-                            <span>John Doe</span>
-                        </div>
-                        <div class="comment-content">Lorem Ipsum</div>
-                    </div>
-                </div>
+                    
             </div>
+            {{/each}}
         </div>
     </div>
     </div>
-
-        <div class="popup">
+</div>
+        <div class="popup animable">
             <h2>Create New Post</h2>
-            <input type="text" placeholder="Post Title">
-            <textarea></textarea>
-            <a href="javascript" class="">Make Post</a>
+            <input type="file" id="postPic" name="photo"
+                placeholder="Profile Pic">
+            <textarea id="postContent"></textarea>
+            <a href="javascript:;" class="form-button" id="form-button">Make Post</a>
         </div>
     <script src="./static/js/nitrous.js"></script>
+    <script>
+    $(document).ready(function() {
+        $("#form-button").click(function() {
+            console.log('Sending Register Data');
+            postPic = $("#postPic").val();
+            postContent = $("#postContent").val();
+            $.post("/wall/new_post", { 
+                postPic: postPic,
+                postContent: postContent
+            });
+            $("#transition").addClass("fade-gray").removeClass("no-display");
+                setTimeout(function () {
+           window.location.replace("/wall");
+            }, 1);
+        });
+    });
+</script>

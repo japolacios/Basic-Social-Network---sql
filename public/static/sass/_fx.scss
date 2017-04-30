@@ -99,3 +99,26 @@
         transform: translate(0,0);
     }
 }
+
+.no-display{
+    display: none;
+}
+
+.fade-gray{
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    background: $main-bg-color;
+    animation: fade-to-gray 1s 0.9s both;
+    position: absolute;
+    z-index: 3;
+}
+
+@keyframes fade-to-gray {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
