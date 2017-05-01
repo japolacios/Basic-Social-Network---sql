@@ -61,7 +61,7 @@ wallRouter.get('/', function(req, res) {
 
 wallRouter.post('/new_post', function(req, res, next) {
     console.log("Calling new post Function");
-    postPic = req.body.postPic;
+    postPic = req.file.postPic;
     postContent = req.body.postContent;
 
     postControl.newPost(postPic,postContent);

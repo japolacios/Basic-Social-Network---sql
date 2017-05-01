@@ -32,6 +32,8 @@ var registerRouter = require('./routes/register-router');
 app.use("/register", registerRouter);
 var wallRouter = require('./routes/wall-routes');
 app.use("/wall", wallRouter);
+var photoRouter = require('./routes/photo-router');
+app.use("/upload", photoRouter);
 //Fetch DataBase
 
 db.connect(function (err) {
@@ -51,11 +53,6 @@ db.connect(function (err) {
 app.all('/', function (req, res, next) {
 
     res.redirect(303,'/login');
-    /*
-    console.log('Login Render');
-    res.render('landing', {
-        error: "Hola"
-    });
-    */
+
 });
 

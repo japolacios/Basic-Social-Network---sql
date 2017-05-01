@@ -1,30 +1,22 @@
 //Photo Routes
 //--------------------
-//Set Config
 var express = require('express');
-var bodyParser = require('body-parser');
+var multer = require('multer');
 var photoControl = require('../controllers/photo-controller');
-exports.getRoutes = function () {
-    var photoRouter = express.Router('/');
-    //Format to JSon
-    photoRouter.use(bodyParser.json());
-    photoRouter.use(bodyParser.urlencoded({
-        extended: true
-    }));
-    var ruta = photoRouter.route('/');
-    ruta.get(function (req, res, next) {
-        var result = photoControl.getAll(function (err, photos) {
-            if (err) {
-                console.log("Databe Error");
-                res.status(500);
-                red.end;
-            }
-            else {
-                console.log(photos);
-                res.json(photos);
-            }
-        });
+    //Set Config
+var photoRouter = express.Router();
+var upload = multer({ dest: './public/user-uploads/'});
+//app.use(multer({ dest: './public/user-uploads/'}))
+
+
+//photoRouter.use(multer({ dest: './public/user-uploads/' }));
+
+    photoRouter.post('/upload', upload.single(), function(req, res, next) {
+        // req.file is the `avatar` file
+        // req.body will hold the text fields, if there were any
+        photoControl.setName(req.file.filename);
+        console.log(req.file.filename);
+
     });
-    ruta.post(function (req, res, next) {});
-    return photoRouter;
-}
+
+module.exports = photoRouter;

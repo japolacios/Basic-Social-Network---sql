@@ -1,9 +1,11 @@
 var userControl = require('../controllers/user-controller');
 var db = require('../database');
-
+var photoControl = require('../controllers/photo-controller');
 var user;
 exports.newPost = function(picture, content) {
     userId = userControl.getUserId();
+    var newPhotoRoute = photoRouter.getLastName();
+
     var newPost = [userId, picture, content];
 
     db.getConection().query({
