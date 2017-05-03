@@ -3,6 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var userControl = require('../controllers/user-controller');
 var postControl = require('../controllers/post-controller');
+var photoControl = require('../controllers/photo-controller');
 var db = require('../database');
 var user;
 var wallRouter = express.Router();
@@ -61,7 +62,10 @@ wallRouter.get('/', function(req, res) {
 
 wallRouter.post('/new_post', function(req, res, next) {
     console.log("Calling new post Function");
-    postPic = req.file.postPic;
+    postPic = req.body.postPic;
+
+  //  picSrc = photoControl.createImage(postPic);
+
     postContent = req.body.postContent;
 
     postControl.newPost(postPic,postContent);

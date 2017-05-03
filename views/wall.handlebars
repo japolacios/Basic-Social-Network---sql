@@ -7,7 +7,7 @@
                <span>{{userName}}</span>
                <img src="{{userPicture}}">
            </div>
-           <div class="logout">Logout</div>
+           <div class="logout" id="logout">Logout</div>
        </nav>
         <div class="posts-container float-up">
         {{#each data}}
@@ -19,7 +19,12 @@
                     <div class="post-profile">
                         <img src="./static/images/default-profile.png">
                         <span>{{owner}}</span>
+                        <br/>
+                        <div class="post-text">
+                        <span>{{postText}}</span>
+                        </div>
                     </div>
+
                 </div>
                 <div class="stats">
                     <div class="likes">
@@ -47,10 +52,11 @@
     </div>
     </div>
 </div>
-        <div class="popup animable">
+</div>
+<div class="popup animable">
             <h2>Create New Post</h2>
-            <input type="file" id="postPic" name="photo"
-                placeholder="Profile Pic">
+            <input type="text" id="postPic" name="photo"
+                placeholder="Pic Url">
             <textarea id="postContent"></textarea>
             <a href="javascript:;" class="form-button" id="form-button">Make Post</a>
         </div>
@@ -61,10 +67,24 @@
             console.log('Sending Register Data');
             postPic = $("#postPic").val();
             postContent = $("#postContent").val();
+            
             $.post("/wall/new_post", { 
                 postPic: postPic,
                 postContent: postContent
             });
+
+
+            $("#transition").addClass("fade-gray").removeClass("no-display");
+                setTimeout(function () {
+           window.location.replace("/wall");
+            }, 1);
+        });
+
+        $("#logout").click(function() {
+            
+            $.post("/logout");
+
+
             $("#transition").addClass("fade-gray").removeClass("no-display");
                 setTimeout(function () {
            window.location.replace("/wall");

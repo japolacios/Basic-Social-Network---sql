@@ -3,7 +3,12 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var cors = require('cors');
+var multer = require('multer');
 
+
+app.use(multer({
+    dest : './uploads/'
+}).single('photo'));
 //Set Cros
 app.use(cors());
 // Set Server Vars 
@@ -34,6 +39,8 @@ var wallRouter = require('./routes/wall-routes');
 app.use("/wall", wallRouter);
 var photoRouter = require('./routes/photo-router');
 app.use("/upload", photoRouter);
+
+var userControl = require('./controllers/user-controller');
 //Fetch DataBase
 
 db.connect(function (err) {
@@ -54,5 +61,9 @@ app.all('/', function (req, res, next) {
 
     res.redirect(303,'/login');
 
+});
+
+app.post('/logout', function(req, res, next){
+    userControl.logout();
 });
 

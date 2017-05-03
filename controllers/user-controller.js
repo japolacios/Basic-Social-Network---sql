@@ -68,3 +68,8 @@ exports.getUserId = function(){
     console.log('Fetching UserId');
     return userId;
 }
+
+exports.logout = function(){
+    user = null;
+    userId = null;
+}
