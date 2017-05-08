@@ -4,7 +4,8 @@
   "description": "Simple Social Network with React templating and MySql",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "star": "node app.js"
   },
   "keywords": [
     "javascript",
